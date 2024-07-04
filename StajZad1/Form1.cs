@@ -18,7 +18,7 @@
             noteLabel.Visible = false;
         }
 
-        static Color GetColorFromCluster(List<Color> colors, int[] clusters, int clusterIndex)
+        Color GetColorFromCluster(List<Color> colors, int[] clusters, int clusterIndex)
         {
             var clusterColors = colors.Where((c, index) => clusters[index] == clusterIndex).ToList();
             if (clusterColors.Count == 0)
@@ -68,6 +68,11 @@
                 }
                 contrast1.Text += $"RGB = ({primaryColor.R}, {primaryColor.G}, {primaryColor.B})";
                 contrast2.Text += $"RGB = ({secondaryColor.R}, {secondaryColor.G}, {secondaryColor.B})";
+
+                if (isDefaultColor)
+                {
+                    noteLabel.Visible = true;
+                }
 
                 yourColors.Visible = true;
                 contrast1.Visible = true;
@@ -157,6 +162,7 @@
             givenPicture.Width = 266;
             givenPicture.Height = 235;
             noteLabel.Visible = false;
+            isDefaultColor = false;
             // todo : razgledaj imageList, moje neshto da ti hrumne kato bonus; naprawi label da syobshtish che e zadaden default cweta (cherno) - opravi bool-a
         }
     }
