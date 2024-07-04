@@ -1,4 +1,6 @@
-﻿namespace StajZad1
+﻿using System.Windows.Forms;
+
+namespace StajZad1
 {
     public partial class Form1 : Form
     {
@@ -24,8 +26,7 @@
             if (clusterColors.Count == 0)
             {
                 isDefaultColor = true;
-                // Връща черен цвят или друг дефиниран цвят по подразбиране, ако списъкът е празен
-                return Color.Black; // Можете да промените този цвят, ако е необходимо
+                return Color.Black;
             }
             int r = (int)clusterColors.Average(c => c.R);
             int g = (int)clusterColors.Average(c => c.G);
@@ -79,10 +80,11 @@
                 contrast2.Visible = true;
                 button1.Enabled = true;
                 areLabelsFull = true;
+                errorProvider1.Clear();
             }
             else if (areLabelsFull)
             {
-
+                errorProvider1.SetError(givenPicture, "You first need to clear the form!");
             }
             else
             {
@@ -149,6 +151,12 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ClearImages();
+            // todo : razgledaj imageList, moje neshto da ti hrumne kato bonus; naprawi label da syobshtish che e zadaden default cweta (cherno) - opravi bool-a
+        }
+
+        private void ClearImages()
+        {
             givenPicture.Image = null;
             contrast1Picture.BackColor = Color.Transparent;
             contrast2Picture.BackColor = Color.Transparent;
@@ -163,7 +171,32 @@
             givenPicture.Height = 235;
             noteLabel.Visible = false;
             isDefaultColor = false;
-            // todo : razgledaj imageList, moje neshto da ti hrumne kato bonus; naprawi label da syobshtish che e zadaden default cweta (cherno) - opravi bool-a
+            errorProvider1.Clear();
+        }
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog fileDialog = new OpenFileDialog())
+            {
+                fileDialog.InitialDirectory = "c:\\";
+                fileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg";
+                fileDialog.FilterIndex = 1;
+                fileDialog.RestoreDirectory = true;
+
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFilePath = fileDialog.FileName;
+                    givenPicture.Image = Image.FromFile(selectedFilePath);
+                    if (givenPicture.Image.Width > givenPicture.Width || givenPicture.Image.Height > givenPicture.Height)
+                    {
+                        givenPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    else
+                    {
+                        givenPicture.Size = new Size(givenPicture.Image.Width, givenPicture.Image.Height);
+                    }
+                    errorLabel.Visible = false;
+                }
+            }
         }
     }
 }

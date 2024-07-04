@@ -41,6 +41,8 @@
             button1 = new Button();
             yourColors = new Label();
             noteLabel = new Label();
+            title2 = new Label();
+            browseButton = new Button();
             ((System.ComponentModel.ISupportInitialize)givenPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contrast1Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contrast2Picture).BeginInit();
@@ -51,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(51, 44);
+            label1.Location = new Point(24, 44);
             label1.Name = "label1";
             label1.Size = new Size(206, 28);
             label1.TabIndex = 0;
@@ -71,7 +73,7 @@
             // contrast1
             // 
             contrast1.AutoSize = true;
-            contrast1.Location = new Point(458, 201);
+            contrast1.Location = new Point(540, 201);
             contrast1.Name = "contrast1";
             contrast1.Size = new Size(36, 15);
             contrast1.TabIndex = 2;
@@ -80,7 +82,7 @@
             // contrast2
             // 
             contrast2.AutoSize = true;
-            contrast2.Location = new Point(458, 377);
+            contrast2.Location = new Point(540, 377);
             contrast2.Name = "contrast2";
             contrast2.Size = new Size(36, 15);
             contrast2.TabIndex = 3;
@@ -89,7 +91,7 @@
             // doContrast
             // 
             doContrast.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            doContrast.Location = new Point(36, 359);
+            doContrast.Location = new Point(36, 402);
             doContrast.Name = "doContrast";
             doContrast.Size = new Size(178, 48);
             doContrast.TabIndex = 4;
@@ -109,7 +111,7 @@
             // 
             // contrast1Picture
             // 
-            contrast1Picture.Location = new Point(458, 88);
+            contrast1Picture.Location = new Point(540, 88);
             contrast1Picture.Name = "contrast1Picture";
             contrast1Picture.Size = new Size(170, 110);
             contrast1Picture.TabIndex = 6;
@@ -117,7 +119,7 @@
             // 
             // contrast2Picture
             // 
-            contrast2Picture.Location = new Point(458, 264);
+            contrast2Picture.Location = new Point(540, 264);
             contrast2Picture.Name = "contrast2Picture";
             contrast2Picture.Size = new Size(170, 110);
             contrast2Picture.TabIndex = 7;
@@ -130,7 +132,7 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button1.Location = new Point(240, 359);
+            button1.Location = new Point(240, 402);
             button1.Name = "button1";
             button1.Size = new Size(93, 48);
             button1.TabIndex = 8;
@@ -142,7 +144,7 @@
             // 
             yourColors.AutoSize = true;
             yourColors.Font = new Font("Segoe UI", 15F);
-            yourColors.Location = new Point(458, 44);
+            yourColors.Location = new Point(540, 44);
             yourColors.Name = "yourColors";
             yourColors.Size = new Size(192, 28);
             yourColors.TabIndex = 9;
@@ -152,17 +154,40 @@
             // 
             noteLabel.AutoSize = true;
             noteLabel.ForeColor = Color.Teal;
-            noteLabel.Location = new Point(458, 402);
+            noteLabel.Location = new Point(540, 402);
             noteLabel.Name = "noteLabel";
             noteLabel.Size = new Size(291, 30);
             noteLabel.TabIndex = 10;
             noteLabel.Text = "Note: One of the colors was automatically set to black\r\nbecause the image's colors were too similar\r\n";
             // 
+            // title2
+            // 
+            title2.AutoSize = true;
+            title2.Font = new Font("Segoe UI", 15F);
+            title2.Location = new Point(24, 346);
+            title2.Name = "title2";
+            title2.Size = new Size(288, 28);
+            title2.TabIndex = 11;
+            title2.Text = "or select it from your computer:";
+            // 
+            // browseButton
+            // 
+            browseButton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            browseButton.Location = new Point(318, 340);
+            browseButton.Name = "browseButton";
+            browseButton.Size = new Size(93, 48);
+            browseButton.TabIndex = 12;
+            browseButton.Text = "Browse";
+            browseButton.UseVisualStyleBackColor = true;
+            browseButton.Click += browseButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(850, 490);
+            Controls.Add(browseButton);
+            Controls.Add(title2);
             Controls.Add(noteLabel);
             Controls.Add(yourColors);
             Controls.Add(button1);
@@ -198,5 +223,7 @@
         private Button button1;
         private Label yourColors;
         private Label noteLabel;
+        private Label title2;
+        private Button browseButton;
     }
 }
