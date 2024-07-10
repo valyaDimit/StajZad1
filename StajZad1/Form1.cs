@@ -152,7 +152,7 @@ namespace StajZad1
         private void button1_Click(object sender, EventArgs e)
         {
             ClearImages();
-            // todo : razgledaj imageList, moje neshto da ti hrumne kato bonus; naprawi label da syobshtish che e zadaden default cweta (cherno) - opravi bool-a
+            // todo : razgledaj imageList, moje neshto da ti hrumne kato bonus
         }
 
         private void ClearImages()
